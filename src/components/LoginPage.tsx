@@ -87,9 +87,12 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
             เข้าสู่ระบบ
           </button>
 
-          <div className="text-center">
-            <p className="text-xs text-gray-500">
-              Demo: Username: officer001, Password: secure123
+          <div className="text-left">
+            <p className="text-l text-black">
+              Username: officer001
+            </p>
+            <p className="text-l text-black">
+              Password: secure123
             </p>
           </div>
         </form>
