@@ -26,12 +26,12 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 flex items-center justify-center px-4">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 flex items-center justify-center px-4">
       <div className="max-w-md w-full space-y-8">
         <div className="text-center">
           <div className="flex justify-center mb-6">
-            <div className="bg-white rounded-full p-4 shadow-lg">
-              <Shield className="w-12 h-12 text-blue-700" />
+            <div className="bg-slate-800 rounded-full p-4 shadow-xl border border-slate-600">
+              <Shield className="w-12 h-12 text-blue-400" />
             </div>
           </div>
           <h2 className="text-3xl font-bold text-white mb-2">TATHIP</h2>
@@ -39,9 +39,9 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
           <p className="text-blue-300 text-sm mt-2">สำหรับเจ้าหน้าที่ตำรวจที่ได้รับอนุญาตเท่านั้น</p>
         </div>
 
-        <form className="bg-white rounded-lg shadow-xl p-8 space-y-6" onSubmit={handleSubmit}>
+        <form className="bg-slate-800 rounded-lg shadow-xl p-8 space-y-6 border border-slate-700" onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="username" className="block text-sm font-medium text-gray-200 mb-2">
               ชื่อผู้ใช้งาน
             </label>
             <div className="relative">
@@ -51,14 +51,14 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
                 type="text"
                 value={credentials.username}
                 onChange={(e) => setCredentials({ ...credentials, username: e.target.value })}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-2 bg-slate-700 border border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white placeholder-gray-400"
                 placeholder="กรอกชื่อผู้ใช้งาน"
               />
             </div>
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="password" className="block text-sm font-medium text-gray-200 mb-2">
               รหัสผ่าน
             </label>
             <div className="relative">
@@ -68,30 +68,30 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
                 type="password"
                 value={credentials.password}
                 onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-2 bg-slate-700 border border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white placeholder-gray-400"
                 placeholder="กรอกรหัสผ่าน"
               />
             </div>
           </div>
 
           {error && (
-            <div className="bg-red-50 border border-red-200 rounded-lg p-3">
-              <p className="text-red-700 text-sm">{error}</p>
+            <div className="bg-red-900 border border-red-700 rounded-lg p-3">
+              <p className="text-red-200 text-sm">{error}</p>
             </div>
           )}
 
           <button
             type="submit"
-            className="w-full bg-blue-700 hover:bg-blue-800 text-white font-medium py-3 px-4 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            className="w-full bg-blue-700 hover:bg-blue-600 text-white font-medium py-3 px-4 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-800"
           >
             เข้าสู่ระบบ
           </button>
 
           <div className="text-left">
-            <p className="text-l text-black">
+            <p className="text-l text-white">
               Username: officer001
             </p>
-            <p className="text-l text-black">
+            <p className="text-l text-white">
               Password: secure123
             </p>
           </div>

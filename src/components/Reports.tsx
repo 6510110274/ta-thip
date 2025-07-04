@@ -24,7 +24,7 @@ const Reports: React.FC = () => {
       date: '2024-01-16',
       status: 'ready',
       size: '2.3 MB',
-      description: 'สรุปกิจกรรมการตรวจสอบเว็บไซต์และสลิปโอนเงิน'
+      description: 'สรุปกิจกรรมการตรวจสอบเว็บไซต์และภาพ'
     },
     {
       id: '2',
@@ -60,10 +60,10 @@ const Reports: React.FC = () => {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'ready': return 'text-green-600 bg-green-50';
-      case 'generating': return 'text-orange-600 bg-orange-50';
-      case 'error': return 'text-red-600 bg-red-50';
-      default: return 'text-gray-600 bg-gray-50';
+      case 'ready': return 'text-green-400 bg-green-900';
+      case 'generating': return 'text-orange-400 bg-orange-900';
+      case 'error': return 'text-red-400 bg-red-900';
+      default: return 'text-gray-400 bg-gray-800';
     }
   };
 
@@ -79,66 +79,66 @@ const Reports: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-white rounded-lg shadow-sm p-6">
+      <div className="bg-slate-800 rounded-lg shadow-lg p-6 border border-slate-700">
         <div className="flex items-center space-x-3">
-          <Search className="w-8 h-8 text-gray-600" />
+          <Search className="w-8 h-8 text-gray-400" />
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">Reports</h1>
-            <p className="text-gray-600 mt-1">ระบบรายงานและการส่งออกข้อมูล</p>
+            <h1 className="text-2xl font-bold text-white">Reports</h1>
+            <p className="text-gray-300 mt-1">ระบบรายงานและการส่งออกข้อมูล</p>
           </div>
         </div>
       </div>
 
       {/* Quick Stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-white rounded-lg shadow-sm p-6">
+        <div className="bg-slate-800 rounded-lg shadow-lg p-6 border border-slate-700">
           <div className="flex items-center space-x-3">
-            <div className="bg-blue-100 rounded-lg p-3">
-              <FileText className="w-6 h-6 text-blue-600" />
+            <div className="bg-blue-900 rounded-lg p-3">
+              <FileText className="w-6 h-6 text-blue-400" />
             </div>
             <div>
-              <h3 className="text-2xl font-bold text-gray-900">1,234</h3>
-              <p className="text-gray-600 text-sm">เว็บไซต์ที่ตรวจสอบ</p>
+              <h3 className="text-2xl font-bold text-white">1,234</h3>
+              <p className="text-gray-300 text-sm">เว็บไซต์ที่ตรวจสอบ</p>
             </div>
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-sm p-6">
+        <div className="bg-slate-800 rounded-lg shadow-lg p-6 border border-slate-700">
           <div className="flex items-center space-x-3">
-            <div className="bg-green-100 rounded-lg p-3">
-              <BarChart3 className="w-6 h-6 text-green-600" />
+            <div className="bg-green-900 rounded-lg p-3">
+              <BarChart3 className="w-6 h-6 text-green-400" />
             </div>
             <div>
-              <h3 className="text-2xl font-bold text-gray-900">456</h3>
-              <p className="text-gray-600 text-sm">สลิปที่วิเคราะห์</p>
+              <h3 className="text-2xl font-bold text-white">456</h3>
+              <p className="text-gray-300 text-sm">ภาพที่วิเคราะห์</p>
             </div>
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-sm p-6">
+        <div className="bg-slate-800 rounded-lg shadow-lg p-6 border border-slate-700">
           <div className="flex items-center space-x-3">
-            <div className="bg-red-100 rounded-lg p-3">
-              <TrendingUp className="w-6 h-6 text-red-600" />
+            <div className="bg-red-900 rounded-lg p-3">
+              <TrendingUp className="w-6 h-6 text-red-400" />
             </div>
             <div>
-              <h3 className="text-2xl font-bold text-gray-900">89</h3>
-              <p className="text-gray-600 text-sm">รายการต้องสงสัย</p>
+              <h3 className="text-2xl font-bold text-white">89</h3>
+              <p className="text-gray-300 text-sm">รายการต้องสงสัย</p>
             </div>
           </div>
         </div>
       </div>
 
       {/* Generate Report */}
-      <div className="bg-white rounded-lg shadow-sm p-6">
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">สร้างรายงานใหม่</h2>
+      <div className="bg-slate-800 rounded-lg shadow-lg p-6 border border-slate-700">
+        <h2 className="text-lg font-semibold text-white mb-4">สร้างรายงานใหม่</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">ประเภทรายงาน</label>
+            <label className="block text-sm font-medium text-gray-300 mb-2">ประเภทรายงาน</label>
             <select
               value={reportType}
               onChange={(e) => setReportType(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-3 py-2 bg-slate-700 border border-slate-600 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white"
             >
               <option value="summary">สรุปกิจกรรม</option>
               <option value="websites">เว็บไซต์ต้องสงสัย</option>
@@ -148,29 +148,29 @@ const Reports: React.FC = () => {
           </div>
           
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">วันที่เริ่มต้น</label>
+            <label className="block text-sm font-medium text-gray-300 mb-2">วันที่เริ่มต้น</label>
             <input
               type="date"
               value={selectedDateFrom}
               onChange={(e) => setSelectedDateFrom(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-3 py-2 bg-slate-700 border border-slate-600 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white"
             />
           </div>
           
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">วันที่สิ้นสุด</label>
+            <label className="block text-sm font-medium text-gray-300 mb-2">วันที่สิ้นสุด</label>
             <input
               type="date"
               value={selectedDateTo}
               onChange={(e) => setSelectedDateTo(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-3 py-2 bg-slate-700 border border-slate-600 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white"
             />
           </div>
           
           <div className="flex items-end">
             <button
               onClick={generateReport}
-              className="w-full px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+              className="w-full px-4 py-2 bg-blue-700 text-white rounded-md hover:bg-blue-600 transition-colors"
             >
               สร้างรายงาน
             </button>
@@ -179,24 +179,24 @@ const Reports: React.FC = () => {
       </div>
 
       {/* Reports List */}
-      <div className="bg-white rounded-lg shadow-sm p-6">
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">รายงานที่มีอยู่</h2>
+      <div className="bg-slate-800 rounded-lg shadow-lg p-6 border border-slate-700">
+        <h2 className="text-lg font-semibold text-white mb-4">รายงานที่มีอยู่</h2>
         
         <div className="space-y-4">
           {reports.map((report) => (
-            <div key={report.id} className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+            <div key={report.id} className="border border-slate-600 rounded-lg p-4 hover:shadow-lg transition-shadow bg-slate-700">
               <div className="flex items-start justify-between">
                 <div className="flex-1">
                   <div className="flex items-center space-x-3 mb-2">
-                    <h3 className="font-medium text-gray-900">{report.title}</h3>
+                    <h3 className="font-medium text-white">{report.title}</h3>
                     <div className={`flex items-center space-x-1 px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(report.status)}`}>
                       <span>{getStatusText(report.status)}</span>
                     </div>
                   </div>
                   
-                  <p className="text-sm text-gray-600 mb-2">{report.description}</p>
+                  <p className="text-sm text-gray-300 mb-2">{report.description}</p>
                   
-                  <div className="flex items-center space-x-4 text-xs text-gray-500">
+                  <div className="flex items-center space-x-4 text-xs text-gray-400">
                     <div className="flex items-center space-x-1">
                       <Calendar className="w-3 h-3" />
                       <span>{report.date}</span>
@@ -209,15 +209,15 @@ const Reports: React.FC = () => {
                   {report.status === 'ready' && (
                     <button
                       onClick={() => downloadReport(report.id)}
-                      className="flex items-center space-x-1 px-3 py-1 bg-green-50 text-green-700 rounded text-sm hover:bg-green-100 transition-colors"
+                      className="flex items-center space-x-1 px-3 py-1 bg-green-700 text-green-200 rounded text-sm hover:bg-green-600 transition-colors"
                     >
                       <Download className="w-4 h-4" />
                       <span>ดาวน์โหลด</span>
                     </button>
                   )}
                   {report.status === 'generating' && (
-                    <div className="flex items-center space-x-2 px-3 py-1 bg-orange-50 text-orange-700 rounded text-sm">
-                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-orange-600"></div>
+                    <div className="flex items-center space-x-2 px-3 py-1 bg-orange-700 text-orange-200 rounded text-sm">
+                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-orange-400"></div>
                       <span>กำลังสร้าง...</span>
                     </div>
                   )}

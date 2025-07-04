@@ -54,10 +54,10 @@ const AlertSystem: React.FC = () => {
 
   const getTypeColor = (type: string) => {
     switch (type) {
-      case 'high': return 'text-red-600 bg-red-50';
-      case 'medium': return 'text-orange-600 bg-orange-50';
-      case 'low': return 'text-blue-600 bg-blue-50';
-      default: return 'text-gray-600 bg-gray-50';
+      case 'high': return 'text-red-400 bg-red-900';
+      case 'medium': return 'text-orange-400 bg-orange-900';
+      case 'low': return 'text-blue-400 bg-blue-900';
+      default: return 'text-gray-400 bg-gray-800';
     }
   };
 
@@ -106,18 +106,18 @@ const AlertSystem: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-white rounded-lg shadow-sm p-6">
+      <div className="bg-slate-800 rounded-lg shadow-lg p-6 border border-slate-700">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <AlertTriangle className="w-8 h-8 text-orange-600" />
+            <AlertTriangle className="w-8 h-8 text-orange-400" />
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">Alert System</h1>
-              <p className="text-gray-600 mt-1">ระบบแจ้งเตือนและประเมินความเสี่ยง</p>
+              <h1 className="text-2xl font-bold text-white">Alert System</h1>
+              <p className="text-gray-300 mt-1">ระบบแจ้งเตือนและประเมินความเสี่ยง</p>
             </div>
           </div>
           <div className="flex items-center space-x-2">
-            <Bell className="w-5 h-5 text-orange-600" />
-            <span className="text-sm font-medium text-orange-600">
+            <Bell className="w-5 h-5 text-orange-400" />
+            <span className="text-sm font-medium text-orange-400">
               {alerts.filter(a => a.status === 'unread').length} การแจ้งเตือนใหม่
             </span>
           </div>
@@ -125,16 +125,16 @@ const AlertSystem: React.FC = () => {
       </div>
 
       {/* Filters */}
-      <div className="bg-white rounded-lg shadow-sm p-6">
+      <div className="bg-slate-800 rounded-lg shadow-lg p-6 border border-slate-700">
         <div className="flex items-center space-x-4">
-          <span className="text-sm font-medium text-gray-700">กรองตาม:</span>
+          <span className="text-sm font-medium text-gray-300">กรองตาม:</span>
           <div className="flex space-x-2">
             <button
               onClick={() => setFilter('all')}
               className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
                 filter === 'all'
-                  ? 'bg-orange-100 text-orange-700'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                  ? 'bg-orange-700 text-white'
+                  : 'bg-slate-700 text-gray-300 hover:bg-slate-600'
               }`}
             >
               ทั้งหมด ({alerts.length})
@@ -143,8 +143,8 @@ const AlertSystem: React.FC = () => {
               onClick={() => setFilter('unread')}
               className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
                 filter === 'unread'
-                  ? 'bg-orange-100 text-orange-700'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                  ? 'bg-orange-700 text-white'
+                  : 'bg-slate-700 text-gray-300 hover:bg-slate-600'
               }`}
             >
               ยังไม่อ่าน ({alerts.filter(a => a.status === 'unread').length})
@@ -153,8 +153,8 @@ const AlertSystem: React.FC = () => {
               onClick={() => setFilter('high')}
               className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
                 filter === 'high'
-                  ? 'bg-orange-100 text-orange-700'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                  ? 'bg-orange-700 text-white'
+                  : 'bg-slate-700 text-gray-300 hover:bg-slate-600'
               }`}
             >
               ความเสี่ยงสูง ({alerts.filter(a => a.type === 'high').length})
@@ -164,14 +164,14 @@ const AlertSystem: React.FC = () => {
       </div>
 
       {/* Alerts List */}
-      <div className="bg-white rounded-lg shadow-sm p-6">
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">รายการแจ้งเตือน</h2>
+      <div className="bg-slate-800 rounded-lg shadow-lg p-6 border border-slate-700">
+        <h2 className="text-lg font-semibold text-white mb-4">รายการแจ้งเตือน</h2>
         <div className="space-y-4">
           {filteredAlerts.map((alert) => (
             <div
               key={alert.id}
               className={`border rounded-lg p-4 transition-all ${
-                alert.status === 'unread' ? 'border-orange-300 bg-orange-50' : 'border-gray-200 hover:shadow-md'
+                alert.status === 'unread' ? 'border-orange-600 bg-orange-900/20' : 'border-slate-600 hover:shadow-lg bg-slate-700'
               }`}
             >
               <div className="flex items-start justify-between">
@@ -181,22 +181,22 @@ const AlertSystem: React.FC = () => {
                       <AlertTriangle className="w-3 h-3" />
                       <span>{getTypeText(alert.type)}</span>
                     </div>
-                    <div className="flex items-center space-x-1 text-gray-500">
+                    <div className="flex items-center space-x-1 text-gray-400">
                       {getStatusIcon(alert.status)}
                       <span className="text-xs">{alert.source}</span>
                     </div>
                   </div>
                   
-                  <h3 className="font-medium text-gray-900 mb-1">{alert.title}</h3>
-                  <p className="text-sm text-gray-600 mb-2">{alert.message}</p>
-                  <p className="text-xs text-gray-500">{alert.timestamp}</p>
+                  <h3 className="font-medium text-white mb-1">{alert.title}</h3>
+                  <p className="text-sm text-gray-300 mb-2">{alert.message}</p>
+                  <p className="text-xs text-gray-400">{alert.timestamp}</p>
                 </div>
                 
                 <div className="flex space-x-2 ml-4">
                   {alert.status === 'unread' && (
                     <button
                       onClick={() => markAsRead(alert.id)}
-                      className="px-3 py-1 bg-blue-50 text-blue-700 rounded text-sm hover:bg-blue-100 transition-colors"
+                      className="px-3 py-1 bg-blue-700 text-blue-200 rounded text-sm hover:bg-blue-600 transition-colors"
                     >
                       อ่านแล้ว
                     </button>
@@ -204,14 +204,14 @@ const AlertSystem: React.FC = () => {
                   {alert.status !== 'resolved' && (
                     <button
                       onClick={() => markAsResolved(alert.id)}
-                      className="px-3 py-1 bg-green-50 text-green-700 rounded text-sm hover:bg-green-100 transition-colors"
+                      className="px-3 py-1 bg-green-700 text-green-200 rounded text-sm hover:bg-green-600 transition-colors"
                     >
                       แก้ไขแล้ว
                     </button>
                   )}
                   <button
                     onClick={() => deleteAlert(alert.id)}
-                    className="px-3 py-1 bg-red-50 text-red-700 rounded text-sm hover:bg-red-100 transition-colors"
+                    className="px-3 py-1 bg-red-700 text-red-200 rounded text-sm hover:bg-red-600 transition-colors"
                   >
                     <X className="w-4 h-4" />
                   </button>
