@@ -30,8 +30,8 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
       <div className="max-w-md w-full space-y-8">
         <div className="text-center">
           <div className="flex justify-center mb-6">
-            <div className="bg-slate-800 rounded-full p-4 shadow-xl border border-slate-600">
-              <Shield className="w-12 h-12 text-blue-400" />
+            <div className="rounded-full mt-6">
+              <img src="/logo.png" alt="Logo" className="w-32 h-32 text-blue-300" />
             </div>
           </div>
           <h2 className="text-3xl font-bold text-white mb-2">TATHIP</h2>
