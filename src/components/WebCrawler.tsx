@@ -220,27 +220,6 @@ const WebCrawler: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Crawler Control */}
           <div className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
-                เพิ่ม URL เป้าหมาย
-              </label>
-              <div className="flex space-x-2">
-                <input
-                  type="url"
-                  value={targetUrl}
-                  onChange={(e) => setTargetUrl(e.target.value)}
-                  placeholder="https://example.com"
-                  className="flex-1 px-3 py-2 bg-slate-700 border border-slate-600 rounded-md focus:ring-2 focus:ring-cyan-500 focus:border-transparent text-white placeholder-gray-400"
-                />
-                <button
-                  onClick={addUrl}
-                  className="px-4 py-2 bg-cyan-700 text-white rounded-md hover:bg-cyan-600 transition-colors"
-                >
-                  เพิ่ม
-                </button>
-              </div>
-            </div>
-
             <button
               onClick={toggleCrawler}
               className={`flex items-center space-x-2 px-4 py-2 rounded-md transition-colors ${
@@ -264,21 +243,6 @@ const WebCrawler: React.FC = () => {
           </div>
 
           {/* Keywords */}
-          <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">
-              คำสำคัญที่ตรวจสอบ
-            </label>
-            <div className="flex flex-wrap gap-2">
-              {keywords.map((keyword, index) => (
-                <span
-                  key={index}
-                  className="px-2 py-1 bg-cyan-900 text-cyan-300 rounded-full text-sm border border-cyan-700"
-                >
-                  {keyword}
-                </span>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
 
