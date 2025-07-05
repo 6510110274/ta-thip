@@ -21,7 +21,7 @@ interface Case {
   title: string;
 }
 
-const OCRModule: React.FC = () => {
+const SlipModule: React.FC = () => {
   const [dragActive, setDragActive] = useState(false);
   const [processing, setProcessing] = useState(false);
   const [selectedCase, setSelectedCase] = useState('');
@@ -182,8 +182,8 @@ const OCRModule: React.FC = () => {
         <div className="flex items-center space-x-3">
           <FileText className="w-8 h-8 text-green-400" />
           <div>
-            <h1 className="text-2xl font-bold text-white">OCR Classification</h1>
-            <p className="text-gray-300 mt-1">ระบบแยกประเภทและอ่านข้อมูลภาพอัตโนมัติ</p>
+            <h1 className="text-2xl font-bold text-white">Slip Reader</h1>
+            <p className="text-gray-300 mt-1">ระบบแยกรูปภาพสลิปและอ่านข้อความในสลิป</p>
           </div>
         </div>
       </div>
@@ -332,4 +332,4 @@ const OCRModule: React.FC = () => {
   );
 };
 
-export default OCRModule;
+export default SlipModule;

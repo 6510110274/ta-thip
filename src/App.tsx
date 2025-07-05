@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Shield, Eye, FileText, Globe, AlertTriangle, Users, BarChart3, Search, FolderOpen } from 'lucide-react';
 import LoginPage from './components/LoginPage';
 import Dashboard from './components/Dashboard';
-import OCRModule from './components/OCRModule';
+import SlipModule from './components/SlipModule';
 import WebCrawler from './components/WebCrawler';
 import Watchlist from './components/Watchlist';
 import AlertSystem from './components/AlertSystem';
@@ -37,7 +37,7 @@ function App() {
   const menuItems = [
     { id: 'dashboard', label: 'Dashboard', icon: BarChart3, color: 'text-blue-400' },
     { id: 'cases', label: 'Case Management', icon: FolderOpen, color: 'text-purple-400' },
-    { id: 'ocr', label: 'OCR Classification', icon: FileText, color: 'text-green-400' },
+    { id: 'ocr', label: 'Slip Reader', icon: FileText, color: 'text-green-400' },
     { id: 'crawler', label: 'Web Crawler', icon: Globe, color: 'text-cyan-400' },
     { id: 'watchlist', label: 'Watchlist', icon: Eye, color: 'text-red-400' },
     { id: 'alerts', label: 'Alert System', icon: AlertTriangle, color: 'text-orange-400' },
@@ -51,7 +51,7 @@ function App() {
       case 'cases':
         return <CaseManagement />;
       case 'ocr':
-        return <OCRModule />;
+        return <SlipModule />;
       case 'crawler':
         return <WebCrawler />;
       case 'watchlist':
