@@ -3,14 +3,14 @@ import { Shield, Eye, FileText, Globe, AlertTriangle, Users, BarChart3, Search, 
 import LoginPage from './components/LoginPage';
 import Dashboard from './components/Dashboard';
 import SlipModule from './components/SlipModule';
-import OCRClassification from './components/OCRClassification';
+import IllegalImageDetection from './components/IllegalImageDetection';
 import WebCrawler from './components/WebCrawler';
 import Watchlist from './components/Watchlist';
 import AlertSystem from './components/AlertSystem';
 import Reports from './components/Reports';
 import CaseManagement from './components/CaseManagement';
 
-type Module = 'dashboard' | 'cases' | 'slip' | 'ocr' | 'crawler' | 'watchlist' | 'alerts' | 'reports';
+type Module = 'dashboard' | 'cases' | 'slip' | 'illegal-images' | 'crawler' | 'watchlist' | 'alerts' | 'reports';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -39,7 +39,7 @@ function App() {
     { id: 'dashboard', label: 'Dashboard', icon: BarChart3, color: 'text-blue-400' },
     { id: 'cases', label: 'Case Management', icon: FolderOpen, color: 'text-purple-400' },
     { id: 'slip', label: 'Slip Reader', icon: FileText, color: 'text-green-400' },
-    { id: 'ocr', label: 'OCR Classification', icon: Archive, color: 'text-emerald-400' },
+    { id: 'illegal-images', label: 'Illegal Image Detection', icon: Archive, color: 'text-emerald-400' },
     { id: 'crawler', label: 'Web Crawler', icon: Globe, color: 'text-cyan-400' },
     { id: 'watchlist', label: 'Watchlist', icon: Eye, color: 'text-red-400' },
     { id: 'alerts', label: 'Alert System', icon: AlertTriangle, color: 'text-orange-400' },
@@ -54,8 +54,8 @@ function App() {
         return <CaseManagement />;
       case 'slip':
         return <SlipModule />;
-      case 'ocr':
-        return <OCRClassification />;
+      case 'illegal-images':
+        return <IllegalImageDetection />;
       case 'crawler':
         return <WebCrawler />;
       case 'watchlist':
