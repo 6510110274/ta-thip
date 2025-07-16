@@ -120,7 +120,6 @@ const CreateCaseModal: React.FC<CreateCaseModalProps> = ({ isOpen, onClose, webs
 
 const WebCrawler: React.FC = () => {
   const [isRunning, setIsRunning] = useState(false);
-  const [targetUrl, setTargetUrl] = useState('');
   const [newKeyword, setNewKeyword] = useState('');
   const [keywords, setKeywords] = useState(['แทงบอล', 'บาคาร่า', 'คาสิโน', 'พนันออนไลน์', 'เดิมพัน', 'สล็อต', 'รูเล็ต']);
   const [showCreateCaseModal, setShowCreateCaseModal] = useState(false);
@@ -163,13 +162,6 @@ const WebCrawler: React.FC = () => {
 
   const toggleCrawler = () => {
     setIsRunning(!isRunning);
-  };
-
-  const addUrl = () => {
-    if (targetUrl.trim()) {
-      console.log('Adding URL to crawler:', targetUrl);
-      setTargetUrl('');
-    }
   };
 
   const addKeyword = () => {
@@ -239,7 +231,7 @@ const WebCrawler: React.FC = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Crawler Control */}
-          <div className="space-y-4">
+          <div className="space-y-4 lg:col-span-1">
             <h3 className="text-md font-medium text-white">การควบคุม</h3>
             <button
               onClick={toggleCrawler}
@@ -261,30 +253,10 @@ const WebCrawler: React.FC = () => {
                 </>
               )}
             </button>
-
-            {/* Add URL */}
-            <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-300">เพิ่ม URL เป้าหมาย</label>
-              <div className="flex space-x-2">
-                <input
-                  type="url"
-                  value={targetUrl}
-                  onChange={(e) => setTargetUrl(e.target.value)}
-                  placeholder="https://example.com"
-                  className="flex-1 px-3 py-2 bg-slate-700 border border-slate-600 rounded-md focus:ring-2 focus:ring-cyan-500 focus:border-transparent text-white placeholder-gray-400"
-                />
-                <button
-                  onClick={addUrl}
-                  className="px-3 py-2 bg-cyan-700 text-white rounded-md hover:bg-cyan-600 transition-colors"
-                >
-                  <Plus className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
           </div>
 
           {/* Keywords Management */}
-          <div className="space-y-4">
+          <div className="space-y-4 lg:col-span-1">
             <h3 className="text-md font-medium text-white">จัดการคำค้นหา</h3>
             
             {/* Add new keyword */}
