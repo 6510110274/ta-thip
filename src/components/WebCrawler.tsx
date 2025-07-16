@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Globe, Search, PlayCircle, PauseCircle, AlertTriangle, CheckCircle, Plus, FolderOpen } from 'lucide-react';
+import { Globe, Search, PlayCircle, PauseCircle, AlertTriangle, CheckCircle, Plus, FolderOpen, X, Edit3 } from 'lucide-react';
 
 interface CrawlResult {
   id: string;
@@ -121,7 +121,8 @@ const CreateCaseModal: React.FC<CreateCaseModalProps> = ({ isOpen, onClose, webs
 const WebCrawler: React.FC = () => {
   const [isRunning, setIsRunning] = useState(false);
   const [targetUrl, setTargetUrl] = useState('');
-  const [keywords] = useState(['แทงบอล', 'บาคาร่า', 'คาสิโน', 'พนันออนไลน์', 'เดิมพัน']);
+  const [newKeyword, setNewKeyword] = useState('');
+  const [keywords, setKeywords] = useState(['แทงบอล', 'บาคาร่า', 'คาสิโน', 'พนันออนไลน์', 'เดิมพัน', 'สล็อต', 'รูเล็ต']);
   const [showCreateCaseModal, setShowCreateCaseModal] = useState(false);
   const [selectedWebsite, setSelectedWebsite] = useState<CrawlResult | null>(null);
   
@@ -149,6 +150,14 @@ const WebCrawler: React.FC = () => {
       keywords: ['คาสิโน', 'บาคาร่า', 'พนันออนไลน์'],
       status: 'flagged',
       lastCrawled: '2024-01-16 08:45:00',
+    },
+    {
+      id: '4',
+      url: 'https://slot-machine.co',
+      title: 'เกมสล็อตออนไลน์ แจ็คพอตใหญ่',
+      keywords: ['สล็อต', 'เดิมพัน'],
+      status: 'suspicious',
+      lastCrawled: '2024-01-16 07:20:00',
     }
   ]);
 
@@ -161,6 +170,17 @@ const WebCrawler: React.FC = () => {
       console.log('Adding URL to crawler:', targetUrl);
       setTargetUrl('');
     }
+  };
+
+  const addKeyword = () => {
+    if (newKeyword.trim() && !keywords.includes(newKeyword.trim())) {
+      setKeywords([...keywords, newKeyword.trim()]);
+      setNewKeyword('');
+    }
+  };
+
+  const removeKeyword = (keywordToRemove: string) => {
+    setKeywords(keywords.filter(keyword => keyword !== keywordToRemove));
   };
 
   const handleCreateCase = (website: CrawlResult) => {
@@ -217,9 +237,10 @@ const WebCrawler: React.FC = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Crawler Control */}
           <div className="space-y-4">
+            <h3 className="text-md font-medium text-white">การควบคุม</h3>
             <button
               onClick={toggleCrawler}
               className={`flex items-center space-x-2 px-4 py-2 rounded-md transition-colors ${
@@ -240,9 +261,73 @@ const WebCrawler: React.FC = () => {
                 </>
               )}
             </button>
+
+            {/* Add URL */}
+            <div className="space-y-2">
+              <label className="block text-sm font-medium text-gray-300">เพิ่ม URL เป้าหมาย</label>
+              <div className="flex space-x-2">
+                <input
+                  type="url"
+                  value={targetUrl}
+                  onChange={(e) => setTargetUrl(e.target.value)}
+                  placeholder="https://example.com"
+                  className="flex-1 px-3 py-2 bg-slate-700 border border-slate-600 rounded-md focus:ring-2 focus:ring-cyan-500 focus:border-transparent text-white placeholder-gray-400"
+                />
+                <button
+                  onClick={addUrl}
+                  className="px-3 py-2 bg-cyan-700 text-white rounded-md hover:bg-cyan-600 transition-colors"
+                >
+                  <Plus className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
           </div>
 
-          {/* Keywords */}
+          {/* Keywords Management */}
+          <div className="space-y-4">
+            <h3 className="text-md font-medium text-white">จัดการคำค้นหา</h3>
+            
+            {/* Add new keyword */}
+            <div className="flex space-x-2">
+              <input
+                type="text"
+                value={newKeyword}
+                onChange={(e) => setNewKeyword(e.target.value)}
+                placeholder="เพิ่มคำค้นหาใหม่..."
+                className="flex-1 px-3 py-2 bg-slate-700 border border-slate-600 rounded-md focus:ring-2 focus:ring-cyan-500 focus:border-transparent text-white placeholder-gray-400"
+                onKeyPress={(e) => e.key === 'Enter' && addKeyword()}
+              />
+              <button
+                onClick={addKeyword}
+                className="px-3 py-2 bg-cyan-700 text-white rounded-md hover:bg-cyan-600 transition-colors"
+              >
+                <Plus className="w-4 h-4" />
+              </button>
+            </div>
+
+            {/* Keywords list */}
+            <div className="space-y-2">
+              <label className="block text-sm font-medium text-gray-300">คำค้นหาปัจจุบัน ({keywords.length})</label>
+              <div className="max-h-32 overflow-y-auto">
+                <div className="flex flex-wrap gap-2">
+                  {keywords.map((keyword, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center space-x-1 px-3 py-1 bg-slate-600 text-gray-300 rounded-full text-sm border border-slate-500"
+                    >
+                      <span>{keyword}</span>
+                      <button
+                        onClick={() => removeKeyword(keyword)}
+                        className="text-red-400 hover:text-red-300 transition-colors"
+                      >
+                        <X className="w-3 h-3" />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
